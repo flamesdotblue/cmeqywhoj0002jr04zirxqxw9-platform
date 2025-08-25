@@ -23,3 +23,56 @@ body {
 video::-webkit-media-controls { display: none !important; }
 video::-webkit-media-controls-enclosure { display: none !important; }
 video::-webkit-media-controls-overlay-play-button { display: none !important; }
+
+/* Hero animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: .35; filter: blur(18px); }
+  50% { opacity: .6; filter: blur(24px); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+
+.hero-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-glow {
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+.shimmer:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.25) 50%, transparent 100%);
+  transform: translateX(-120%);
+  animation: shimmer 2.5s infinite;
+}
+
+.badge {
+  @apply inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs text-white/90 backdrop-blur-xs;
+}
+
+.primary-btn {
+  @apply rounded-lg bg-white px-5 py-3 text-sm font-medium text-black shadow/50 shadow-black/20 transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/60;
+}
+
+.secondary-btn {
+  @apply rounded-lg border border-white/30 bg-white/10 px-5 py-3 text-sm font-medium text-white backdrop-blur-xs transition hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/40;
+}
+
+.code-line {
+  @apply h-2 rounded bg-white/15;
+}
+
+.code-line.thin { @apply h-1.5; }
+
+.code-line.dim { @apply bg-white/10; }
